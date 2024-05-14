@@ -22,14 +22,14 @@ def gestisce_client(client):
         f = open(filename[1:],'rb') 
         outputdata = f.read()
         # print (outputdata) 
-        print ("OK") 
+        # print ("OK") 
         client.send("HTTP/1.1 200 OK\r\n\r\n".encode())
         client.send(outputdata)
         client.send("\r\n".encode())
         client.close()
 
     except IOError:
-        print("ERRORE")
+        # print("ERRORE")
         #Invia messaggio di risposta per file non trovato
         client.send(bytes("HTTP/1.1 404 Not Found\r\n\r\n","UTF-8"))
         client.send(bytes("<html><head></head><body><h1>404 Not Found</h1></body></html>\r\n","UTF-8"))
