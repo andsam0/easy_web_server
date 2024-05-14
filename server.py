@@ -1,6 +1,4 @@
 #!/bin/env python
-import sys, signal
-import http.server
 from threading import Thread
 from socket import * 
 
