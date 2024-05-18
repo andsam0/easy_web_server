@@ -1,5 +1,13 @@
-body {
-    color: red
+body{
+    text-align: center;
+}
+p {
+    color: black
+}
+
+h1 {
+    text-align: center;
+    color: rgb(211, 211, 0);
 }
 
 img {
