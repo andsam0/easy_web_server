@@ -11,32 +11,26 @@ def accetta_richieste():
 def gestisce_client(client):
     message = client.recv(1024)
     try:
-        print(message)
         filename = message.split()[1]
-        # print('filename prima =', filename.decode())
 
         if "/" == filename.decode():
             filename = b'/index.html'
-        # print('filename dopo =', filename.decode())
 
         f = open(filename[1:],'rb') 
         outputdata = f.read()
-        # print (outputdata) 
-        # print ("OK") 
         client.send("HTTP/1.1 200 OK\r\n\r\n".encode())
         client.send(outputdata)
         client.send("\r\n".encode())
         client.close()
 
     except IOError:
-        # print("ERRORE")
         #Invia messaggio di risposta per file non trovato
         client.send(bytes("HTTP/1.1 404 Not Found\r\n\r\n","UTF-8"))
         client.send(bytes("<html><head></head><body><h1>404 Not Found</h1></body></html>\r\n","UTF-8"))
         client.close()
         
 def signal_handler(signal, frame):
-    print( 'Exiting server (Ctrl+C pressed)')
+    print( 'Sto uscendo dal server (Ctrl+C premuto)')
     try:
       if( server ):
         server.server_close()
