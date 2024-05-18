@@ -56,7 +56,7 @@ server.bind(ADDR)
 
 if __name__ == "__main__":
     server.listen(5)
-    print("Madacascar Web Server in esecuzione")
+    print("Madagascar Web Server in esecuzione")
     print("In attesa di connessioni...")
     accept_thread = Thread(target=accetta_richieste)
     accept_thread.start()
