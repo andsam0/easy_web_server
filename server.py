@@ -45,10 +45,16 @@ def signal_handler(signal, frame):
 
 #interrompe l’esecuzione se da tastiera arriva la sequenza (CTRL + C) 
 signal.signal(signal.SIGINT, signal_handler)
-HOST = 'localhost'
-PORT = 8080
+HOST = input("Inserire l'indirizzo dove hostare il server: ")
+if HOST == "":
+   HOST = 'localhost'
+
+PORT = input("Inserire la porta: ")
+if PORT == "":
+   PORT = 8080
+
 BUFSIZ = 1024
-ADDR = (HOST, PORT)
+ADDR = (HOST, int(PORT))
 
 server = socket(AF_INET, SOCK_STREAM)
 server.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
